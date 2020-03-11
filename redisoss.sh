@@ -13,14 +13,15 @@ make && make BUILD_TLS=yes
 #create test certs
 ./utils/gen-test-certs.sh
 #Run Tests
-
-#Note Commands After this point may need to be modified and have no need to be run in a bootstrap. These are manual test steps.
 ./runtest --tls
 #Connect with Tests 
 ./src/redis-server --tls-port 6379 --port 0 \
         --tls-cert-file ./tests/tls/redis.crt \
         --tls-key-file ./tests/tls/redis.key \
         --tls-ca-cert-file ./tests/tls/ca.crt &
+        
+#Note Commands After this point may need to be modified and have no need to be run in a bootstrap. These are manual test steps.
+
 #Test Client Connection and Shutdown Server
 ./src/redis-cli --tls \
         --cert ./tests/tls/redis.crt \
