@@ -60,4 +60,17 @@ openssl dhparam -out redis.dh 2048
         --cert redis.crt \
         --key redis.key \
         --cacert ca.crt ping
+        
+#test with basic tls config defined (found in github repo) just intended to get it running and not to harden in any way.
+./src/redis-cli --tls --cacert ca.crt
+
+#test with intermediate TLS config defined. May be run in cluster or standalone mode (some directives just wont work in cluster) This is intended to do due dilligence but not be hardcore
+#Same test works for hardcore configuration
+./src/redis-cli --tls \
+        --cert redis.crt \
+        --key redis.key \
+        --cacert ca.crt
+
+
+
 
