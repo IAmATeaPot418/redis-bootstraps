@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script provides the basic configuration needed to run Redis as a non-privledged user on the operating system.
+# It also configures Redis to run as a system service and provides basic operating system level hardening
+# This does not provide every level of security that may be needed for your use case. Review the redis.conf file configurations
+# For the most common security configurations and restart services with changes as you see fit.
+
 #Install dependencies for basic functionality and for TLS support.
 
 sudo apt update -y
@@ -74,3 +79,5 @@ EOF'
 #Start Redis and Enable it on startup
 sudo systemctl start redis
 sudo systemctl enable redis
+
+
